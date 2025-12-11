@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solar System Explorer • Vite + Three.js</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { 
+        overflow: hidden; 
+        background: #000; 
+        font-family: 'Segoe UI', sans-serif;
+        color: white;
+      }
+      canvas { display: block; }
+      #ui {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        pointer-events: none; z-index: 10;
+      }
+      #hud {
+        position: absolute; bottom: 20px; left: 20px;
+        background: rgba(0,0,0,0.7); padding: 12px 20px; border-radius: 12px;
+        border: 1px solid rgba(6, 1, 255, 0.267);
+        backdrop-filter: blur(8px);
+        font-size: 14px;
+      }
+      #crosshair {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        font-size: 28px; color: rgb(0, 4, 255); text-shadow: 0 0 10px rgb(23, 9, 209);
+        pointer-events: none; opacity: 0.6;
+      }
+      #start {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        background: rgba(0,10,30,0.95); padding: 30px 50px; border-radius: 16px;
+        text-align: center; border: 2px solid rgb(0, 26, 255); box-shadow: 0 0 40px #0ff3;
+        pointer-events: all; cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ui">
+      <div id="start" onclick="document.body.requestPointerLock(); this.remove()">
+        <h1>SPACE EXPLORER</h1>
+        <p>Click to begin flight</p>
+        <br>
+        <small>WASD • Mouse Look • QE Up/Down • Scroll Speed</small>
+      </div>
+
+      <div id="hud">
+        Speed: <span id="speed">1.0</span>x | 
+        Nearest: <span id="nearest">Sun</span> | 
+        Distance: <span id="dist">—</span>
+      </div>
+      <div id="crosshair">+</div>
+    </div>
+
+    <script type="module" src="base.js"></script>
+  </body>
+</html>
